@@ -15,7 +15,7 @@ class ContactsAdapter(
 
     var contactList = mutableListOf<Contact>()
         set(value) {
-            val contactDiffUtils = ContactDiffUtils(field, value)
+            val contactDiffUtils = ContactsDiffUtils(field, value)
             val contactDiffResult = DiffUtil.calculateDiff(contactDiffUtils)
             field = value
             contactDiffResult.dispatchUpdatesTo(this)
@@ -38,7 +38,7 @@ class ContactsAdapter(
         private val phoneNumber = itemView.findViewById<TextView>(R.id.phoneNumberTextView)
         private val avatar = itemView.findViewById<ImageView>(R.id.imageView)
 
-        fun bind(contact: Contact, clickListener: OnRecyclerItemClicked, position: Int) {
+        fun bind(contact: Contact, clickListener: OnRecyclerItemClicked) {
 
             itemView.setOnClickListener { clickListener.onClick(contact) }
             itemView.setOnLongClickListener {

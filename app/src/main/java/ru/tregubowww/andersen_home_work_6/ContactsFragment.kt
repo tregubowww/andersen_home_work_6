@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Locale
 
@@ -60,7 +60,7 @@ class ContactsFragment : Fragment(), ConfirmationDialogFragment.ConfirmationList
 
         recyclerView.adapter = adapterContacts
         recyclerView.layoutManager =
-            GridLayoutManager(context, 1)
+            LinearLayoutManager(requireContext())
 
         adapterContacts.contactList = ContactsDB.contactList
 
