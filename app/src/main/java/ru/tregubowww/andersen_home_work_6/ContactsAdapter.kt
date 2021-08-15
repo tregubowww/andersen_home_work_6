@@ -28,7 +28,7 @@ class ContactsAdapter(
 
     override fun onBindViewHolder(holder: ContactsViewHolder, position: Int) {
         val itemContact = contactList[position]
-        holder.bind(itemContact, clickListener, position)
+        holder.bind(itemContact, clickListener)
     }
 
     class ContactsViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {

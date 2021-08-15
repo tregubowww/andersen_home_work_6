@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment
 
 class ConfirmationDialogFragment : DialogFragment() {
 
-    private var position: Int? = null
+    private var position: Int = 0
     private var contact: Contact? = null
 
     private var dialogEventListener: ConfirmationListener? = null
@@ -21,10 +21,8 @@ class ConfirmationDialogFragment : DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            position = it.getInt(CONTACT_POSITION_KEY_EXTRA)
-            contact = it.getParcelable(CONTACT_KEY_EXTRA)
-        }
+        contact = requireArguments().getParcelable(CONTACT_KEY_EXTRA)
+        position = requireArguments().getInt(CONTACT_POSITION_KEY_EXTRA)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

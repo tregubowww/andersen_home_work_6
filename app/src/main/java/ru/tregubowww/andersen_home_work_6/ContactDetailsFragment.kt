@@ -1,5 +1,6 @@
 package ru.tregubowww.andersen_home_work_6
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.EditText
 
 class ContactDetailsFragment : Fragment() {
 
+    private lateinit var listener: TransactionsContactsFragmentClicks
     private var contact: Contact? = null
 
     private lateinit var phoneNumberEditText: EditText
@@ -19,18 +21,23 @@ class ContactDetailsFragment : Fragment() {
     private lateinit var emailEditText: EditText
     private lateinit var buttonSave: Button
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is TransactionsContactsFragmentClicks) {
+            listener = context
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            contact = it.getParcelable(CONTACT_KEY_EXTRA)
-        }
+        contact = requireArguments().getParcelable<Contact>(CONTACT_KEY_EXTRA)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_contact_details, container, false)
     }
 
@@ -49,6 +56,7 @@ class ContactDetailsFragment : Fragment() {
             contact?.surname = surnameEditText.text.toString()
             contact?.city = cityNumberEditText.text.toString()
             contact?.email = emailEditText.text.toString()
+            listener.onSaveClick()
         }
     }
 

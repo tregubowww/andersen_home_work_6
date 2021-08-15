@@ -3,25 +3,15 @@ package ru.tregubowww.andersen_home_work_6
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), ContactsFragment.TransactionsContactsFragmentClicks {
+class MainActivity : AppCompatActivity(), TransactionsContactsFragmentClicks {
 
-    private val fragmentContacts = ContactsFragment.newInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            if (resources.getBoolean(R.bool.isTab)) {
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.tabletContainerContactsFragment, fragmentContacts)
-                    .commit()
-            } else {
-                supportFragmentManager.beginTransaction()
-                    .add(R.id.containerFragment, fragmentContacts)
-                    .commit()
-            }
-
+            onSaveClick()
         }
     }
 
@@ -38,5 +28,17 @@ class MainActivity : AppCompatActivity(), ContactsFragment.TransactionsContactsF
                 .commit()
         }
 
+    }
+
+    override fun onSaveClick() {
+        if (resources.getBoolean(R.bool.isTab)) {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.tabletContainerContactsFragment, ContactsFragment.newInstance())
+                .commit()
+        } else {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.containerFragment, ContactsFragment.newInstance())
+                .commit()
+        }
     }
 }

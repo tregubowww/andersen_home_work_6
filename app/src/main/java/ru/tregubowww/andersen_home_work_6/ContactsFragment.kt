@@ -105,10 +105,6 @@ class ContactsFragment : Fragment(), ConfirmationDialogFragment.ConfirmationList
         }
     }
 
-    interface TransactionsContactsFragmentClicks {
-        fun onContactClick(contact: Contact)
-    }
-
     override fun onConfirmDialogButtonClicked(position: Int?, contact: Contact?) {
         ContactsDB.contactList.remove(contact)
         position?.let { adapterContacts.notifyItemRemoved(it) }
