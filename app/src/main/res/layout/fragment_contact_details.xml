@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,12 +7,13 @@
     android:orientation="vertical"
     tools:context=".ContactDetailsFragment">
 
-    <Button
-        android:id="@+id/buttonSave"
+    <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:text="@string/save" />
+        android:ems="10"
+        android:hint="@string/name" />
 
     <EditText
         android:id="@+id/surnameEditText"
@@ -48,13 +48,11 @@
         android:ems="10"
         android:hint="@string/PhoneNumber"
         android:inputType="phone" />
-
-    <EditText
-        android:id="@+id/nameEditText"
+    <Button
+        android:id="@+id/buttonSave"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="10dp"
-        android:ems="10"
-        android:hint="@string/name" />
+        android:text="@string/save" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
